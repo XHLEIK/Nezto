@@ -1,19 +1,25 @@
-import mongoose from "mongoose";
+import { model, Schema } from "mongoose";
 
 
 
-// Order Schema
-const orderSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  vendor: { type: mongoose.Schema.Types.ObjectId, ref: "Laundry", required: true },
-  rider: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // Optional Rider
-  status: { type: String, enum: ["pending", "accepted", "picked_up", "washing", "delivered", "completed", "canceled"], default: "pending" },
-  otp: { type: String, required: true }, // OTP for security
-  totalPrice: { type: Number, required: true },
-  items: [{ name: String, quantity: Number, price: Number }], // Laundry Items
-  pickupTime: { type: Date, required: true },
-  dropTime: { type: Date },
-}, { timestamps: true });
+const OrderSchema = new Schema(
+    {
+      price: { type: Number, required: true },
+      status: {
+        type: String,
+        enum: ["pending", "accepted", "completed", "canceled"],
+        default: "pending",
+      },
+      type: { type: String, required: true }, // e.g., "wash", "dry clean"
+      user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+      rider: { type: Schema.Types.ObjectId, ref: "User" }, // Optional if assigned
+      otp: { type: String, required: true }, // String to prevent leading-zero issues
+      pick_time: { type: Date, required: true },
+      drop_time: { type: Date, required: true },
+      vendor: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    },
+    { timestamps: true }
+  );
 
 
-export const Order = mongoose.model("Order", orderSchema);
+export const Order = model("Order", OrderSchema);
