@@ -1,10 +1,19 @@
-import { google } from "../config.js";
+import { google, google_auth_url } from "../config.js";
 
-// Google Auth to get user info
-async function fetch_google_user(_token) {
+
+
+/**
+ * Fetch user profile from Google OAuth API
+ * @param {String} token - grant callback code
+ * @returns {import('../utils/_types.js').GoogleUser} User profile from Google OAuth API
+ * @description
+ * This function fetches user profile from Google OAuth API.
+ */
+async function fetch_google_user(token) {
     try {
-        const _response = await axios.get(`${google.user_profile}?access_token=${_token}`);
-        return _response.data;
+        const _response = await fetch(`${google.user_profile}?access_token=${token}`);
+        const _json = await _response.json();
+        return _json;
     } catch (error) {
         console.error('OAuth token error:', error.response?.data || error.message);
         return null;
@@ -38,7 +47,7 @@ export async function googleAuth(req, res) {
         const { code } = req.query;
         // if unable to find code in query
         if (!code) {
-            res.status(401).json({ message: 'Invalid authentication' });
+            res.status(401).json({ message: 'Invalid authentication', error : "code not found in query" });
             return;
         }
         const _data = {
@@ -66,4 +75,9 @@ export async function googleAuth(req, res) {
         res.status(500).json({code : 500, message : "server error", error : error.message || ""})
         return;
     }
+}
+
+
+export async function LogIn(req,res){
+    res.redirect(google_auth_url);
 }
