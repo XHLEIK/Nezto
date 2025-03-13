@@ -1,5 +1,11 @@
-export const DB_NAME = "NeztoDB"
-export const MONGO_URI = process.env.MONGO_URI || ""
+import { configDotenv } from "dotenv";
+console.log(configDotenv({path : ".env"}).parsed);
+
+
+export const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017"
+console.log(MONGO_URI)
+export const PORT = process.env.PORT || 8000;
+
 export const options = {
     httpOnly: true,
     secure: true,
