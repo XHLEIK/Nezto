@@ -1,5 +1,5 @@
 import { google, google_auth_url } from "../config.js";
-
+import { User } from "../models/User.js";
 
 
 /**
@@ -13,7 +13,7 @@ async function fetch_google_user(token) {
     try {
         const _response = await fetch(`${google.user_profile}?access_token=${token}`);
         const _json = await _response.json();
-        return _json;
+        return {_json, access_token : token};
     } catch (error) {
         console.error('OAuth token error:', error.response?.data || error.message);
         return null;
@@ -44,6 +44,7 @@ async function fetch_google_user(token) {
  */
 export async function googleAuth(req, res) {
     try {
+        const location = req.get("geolocation") || req.query.geolocation || null;
         const { code } = req.query;
         // if unable to find code in query
         if (!code) {
@@ -68,6 +69,25 @@ export async function googleAuth(req, res) {
             res.status(401).json({ message: 'Invalid authentication' });
             return;
         }
+        // if user already exists in database
+        const _userExists = await User.findOne({ email : _user.email });
+        if (_userExists){
+            _userExists.token = _user.access_token;
+            await _userExists.save();
+            res.status(200).json(_userExists)
+            return;
+        }
+        // if user does not exist in database
+        const _newUser = new User({
+            email : _user.email,
+            name : _user.name,
+            token : _json.access_token,
+            role : "user",
+            location : location
+        })
+        await _newUser.save();
+
+
         res.status(200).json(_user)
         return;
         
