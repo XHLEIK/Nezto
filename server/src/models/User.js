@@ -2,6 +2,7 @@ import { model, Schema } from "mongoose";
 
 /**
  * @typedef {Object} User
+ * @property {string} email - User's email
  * @property {string} token - JWT token from Google OAuth
  * @property {string} name - User's name
  * @property {string} [profile] - Profile image URL
@@ -13,6 +14,7 @@ import { model, Schema } from "mongoose";
 
 const UserSchema = new Schema(
     {
+        email : { type: String, required: true, unique: true },
         token: { type: String, required: true }, // JWT token from Google OAuth
         name: { type: String, required: true },
         profile: { type: String }, // Profile image URL
