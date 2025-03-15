@@ -26,5 +26,10 @@ export const google = {
 }
 
 
-export const google_auth_url = `https://accounts.google.com/o/oauth2/auth?client_id=${google.client_id}&redirect_uri=${origin}/auth/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile`
-console.log(google_auth_url);
+/** 
+* @param {import('express').Request} req - Express request object
+* @returns {string} Google OAuth URL
+*/
+export function google_auth_url(req){
+    return `https://accounts.google.com/o/oauth2/auth?client_id=${google.client_id}&redirect_uri=${req.protocol}://${req.get('host')}/auth/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile`
+}

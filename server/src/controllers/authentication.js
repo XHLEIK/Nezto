@@ -66,7 +66,7 @@ export async function googleAuth(req, res) {
  * @param {import('express').Response} res - Express response object
  */
 export async function LogIn(req, res) {
-    res.redirect(google_auth_url);
+    res.redirect(google_auth_url(req));
 }
 
 
