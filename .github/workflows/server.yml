@@ -42,7 +42,7 @@ jobs:
     - name: Setup Deploy
       run: |
         NODE_ENV=production
-        npm start
+        npm run dev
       #chmod +x ./run.sh && sudo ./run.sh
       # pm2 start server/app.js -i 4
       working-directory: ./server
