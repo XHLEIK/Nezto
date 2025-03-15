@@ -17,7 +17,7 @@ const UserSchema = new Schema(
         email : { type: String, required: true, unique: true },
         token: { type: String, required: true }, // JWT token from Google OAuth
         name: { type: String, required: true },
-        profile: { type: String }, // Profile image URL
+        picture: { type: String }, // Profile image URL
         role: {
             type: String,
             enum: ["user", "rider", "vendor", "admin"],
