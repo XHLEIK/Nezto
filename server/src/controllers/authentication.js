@@ -30,6 +30,7 @@ export async function googleAuth(req, res) {
             res.status(401).json({ message: 'Invalid authentication' });
             return;
         }
+        
         // if user already exists in database
         const _userExists = await User.findOne({ email: _user.email });
         if (_userExists) {
