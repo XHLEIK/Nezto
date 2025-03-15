@@ -6,6 +6,10 @@ export const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017"
 export const PORT = process.env.PORT || 8000; //prefer 8000 for now
 export const origin = "http://localhost:"+ PORT;
 
+export const jwtConfig = {
+    secret: process.env.JWT_SECRET,
+    expire: process.env.JWT_EXPIRE || "1d"
+}
 
 export const options = {
     httpOnly: true,
