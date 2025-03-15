@@ -31,5 +31,6 @@ export const google = {
 * @returns {string} Google OAuth URL
 */
 export function google_auth_url(req){
-    return `https://accounts.google.com/o/oauth2/auth?client_id=${google.client_id}&redirect_uri=${req.protocol}://${req.get('host')}/auth/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile`
+    const protocol = req.get('scheme') || req.protocol;
+    return `https://accounts.google.com/o/oauth2/auth?client_id=${google.client_id}&redirect_uri=${protocol}://${req.get('host')}/auth/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile`
 }
