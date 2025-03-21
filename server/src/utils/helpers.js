@@ -44,3 +44,19 @@ export async function fetch_google_user(req) {
         return null;
     }
 }
+
+
+/**
+ * @description Get user token from request
+ * @param {import('express').Request} req 
+ * @returns {string | null} User token
+ */
+export function get_user_token(req) {
+    try {
+        if (!req.cookies.token && (!req.headers.authorization || !req.headers.authorization?.startsWith('Bearer'))) return null;
+        return req.cookies.token || req.headers.authorization.split(' ')[1];
+    } catch (error) {
+        console.error('Error in get_user_token:', error.message);
+        return null;
+    }
+}
