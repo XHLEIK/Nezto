@@ -1,5 +1,5 @@
-import { google } from "../config.js";
-
+import { google, jwtConfig } from "../config.js";
+import jwt from "jsonwebtoken";
 
 /**
  * Fetch user profile from Google OAuth API
@@ -57,6 +57,20 @@ export function get_user_token(req) {
         return req.cookies.token || req.headers.authorization.split(' ')[1];
     } catch (error) {
         console.error('Error in get_user_token:', error.message);
+        return null;
+    }
+}
+
+
+/**
+ * @description Generate JWT token
+ * @param {String} token - User token from request 
+ * @returns {import("./_types.js").JwtUser} JWT user
+ */
+export function verifyJWT(token) {
+    try {
+        return jwt.verify(token, jwtConfig.secret);
+    } catch (error) {
         return null;
     }
 }

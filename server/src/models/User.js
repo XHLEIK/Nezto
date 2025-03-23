@@ -19,7 +19,7 @@ const UserSchema = new Schema(
         name: { type: String, required: true },
         picture: { type: String }, // Profile image URL
         role: {
-            type: String,
+            type: [String],
             enum: ["user", "rider", "vendor", "admin"],
             default: "user",
         },
