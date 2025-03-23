@@ -1,5 +1,5 @@
 import { Order } from "../models/Order";
-import { get_user_token } from "../utils/helpers";
+import { get_user_token, verifyJWT } from "../utils/helpers";
 
 /**
  * 
@@ -7,5 +7,8 @@ import { get_user_token } from "../utils/helpers";
  * @param {import('express').Response} res 
  */
 export async function createOrder(req, res){
-    // suppose to create a new order if laundry status is open(true)
+    const user = verifyJWT(get_user_token(req));
+    if (!user) return res.status(401).json({ message: "Unauthorized" });
+    const orderPayload = req.body;
+    // required a little information about pricing and few other things
 }

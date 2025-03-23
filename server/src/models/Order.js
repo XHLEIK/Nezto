@@ -10,7 +10,12 @@ const OrderSchema = new Schema(
         enum: ["pending", "accepted", "completed", "canceled"],
         default: "pending",
       },
-      type: { type: String, required: true }, // e.g., "wash", "dry clean"
+      type: {
+        type: String,
+        enum: ["wash", "dry_clean", "iron"],
+        required: true,
+      }, // e.g., "wash", "dry_clean"
+
       user: { type: Schema.Types.ObjectId, ref: "User", required: true },
       rider: { type: Schema.Types.ObjectId, ref: "User" }, // Optional if assigned
       otp: { type: String, required: true }, // String to prevent leading-zero issues

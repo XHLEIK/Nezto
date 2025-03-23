@@ -36,7 +36,7 @@ export async function googleAuth(req, res) {
         if (_userExists) {
             _userExists.picture = _user.picture;
             _userExists.name = _user.name;
-            _userExists.token = jwt.sign(jwtUser(_userExists), jwtConfig.secret, { expiresIn: jwtConfig.expire });
+            _userExists.token = jwt.sign(jwtUser(_userExists), jwtConfig.secret);
             await _userExists.save();
             res.setHeader('token', _userExists.token);
             res.cookie('token', _userExists.token, { httpOnly: true, secure: true, sameSite: 'none' });
@@ -47,7 +47,7 @@ export async function googleAuth(req, res) {
 
         // if user does not exist in database
         const newUser = new User({ email: _user.email, picture: _user.picture, name: _user.name, role: "user" })
-        newUser.token = jwt.sign(jwtUser(newUser), jwtConfig.secret, { expiresIn: jwtConfig.expire });
+        newUser.token = jwt.sign(jwtUser(newUser), jwtConfig.secret);
         await newUser.save();
         res.setHeader('token', newUser.token);
         res.cookie('token', newUser.token, { httpOnly: true, secure: true, sameSite: 'none' });
