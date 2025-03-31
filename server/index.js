@@ -3,6 +3,7 @@ import connectDB from './src/db/db.js'
 import { app } from "./src/app.js"
 
 
+
 async function main(){
     try{
         await connectDB();
