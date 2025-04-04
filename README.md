@@ -24,11 +24,9 @@ While we’re starting with laundry, Nezto is built with scalability in mind. Ou
 
 ## 🏗 **Tech Stack**  
 Nezto is built using cutting-edge technologies for performance and scalability:  
-🔹 **Frontend:** React (Next.js) with TypeScript for a smooth user experience.  
+🔹 **Frontend:** React and Tailwind for a smooth user experience.  
 🔹 **Backend:** Node.js with Express, optimized for speed and security.  
-🔹 **Database:** MongoDB for efficient and scalable data management.  
-🔹 **Cloud & Hosting:** Deployed using AWS/GCP for high availability.  
-
+🔹 **Database:** MongoDB for efficient and scalable data management.    
 ---
 
 ## 🤝 **Join Us**  
