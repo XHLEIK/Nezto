@@ -1,57 +1,58 @@
-import React from 'react';
-import NavBar from '../component/block/NavBar';
-import Footer from '../component/block/Footer';
-import { Pen } from 'lucide-react';
-import MenuItem from '../component/ui/cards/MenuItems';
-import { CircleHelp, History, Bell, MapPin,User } from 'lucide-react'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ProfilePage = () => {
-    return (
-        <div className="flex flex-col min-h-screen bg-gray-100 max-w-[680px] mx-auto">
-            {/* Header */}
-            <NavBar />
+function ProfilePage() {
+  const navigate = useNavigate();
 
-            {/* Main Content */}
-            <main className="flex-1 p-4 my-20 flex flex-col gap-4">
-                {/* User Profile */}
-                <div className="bg-teal-100 rounded-lg p-4">
-                    <div className="flex items-center gap-3">
-                        <div className="bg-teal-500 p-2 rounded-full">
-                            <User className="h-6 w-6 text-white" />
-                        </div>
-                        <div className="flex-1">
-                            <h2 className="text-teal-700 font-bold text-xl">User Name</h2>
-                            <p className="text-teal-600 text-sm">email@gmail.com</p>
-                            <p className="text-teal-600 text-sm">+91 8915556785</p>
-                        </div>
-                        <div>
-                            <button className='cursor-pointer'>
-                                <Pen className="h-5 w-5 text-teal-500" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Menu Options */}
-                <div className="flex flex-col">
-                    <MenuItem title="Address" subtitle="Share, Edit & Addresses" icon={<MapPin className="h-5 w-5" />} />
-                    <MenuItem title="Notifications" subtitle="Get All the Updates Here" icon={<Bell className="h-5 w-5" />} />
-                    <MenuItem title="Order History" subtitle="Check Your Past Orders" icon={<History className="h-5 w-5" />} />
-                    <MenuItem title="Support & FAQs" subtitle="Get Help 24/7" icon={<CircleHelp className="h-5 w-5" />} />
-                </div>
-
-                {/* Logout Button */}
-                <div className="flex justify-center mt-4">
-                    <button className="px-8 py-2 bg-white cursor-pointer text-red-500 hover:text-white hover:bg-red-500 border border-red-500 rounded-full font-medium">
-                        Log Out
-                    </button>
-                </div>
-            </main>
-
-            {/* Bottom Navigation */}
-            <Footer />
+  return (
+    <div className="profile-container">
+      {/* Legal section */}
+      <div className="profile-section">
+        <h3 className="section-title">Legal</h3>
+        <div className="profile-options">
+          <div className="profile-option" onClick={() => navigate('/about')}>
+            <div className="option-icon">
+              <i className="fas fa-info-circle"></i>
+            </div>
+            <div className="option-text">
+              <span>About Nezto</span>
+            </div>
+            <i className="fas fa-chevron-right"></i>
+          </div>
+          
+          <div className="profile-option" onClick={() => navigate('/terms-conditions')}>
+            <div className="option-icon">
+              <i className="fas fa-file-contract"></i>
+            </div>
+            <div className="option-text">
+              <span>Terms & Conditions</span>
+            </div>
+            <i className="fas fa-chevron-right"></i>
+          </div>
+          
+          <div className="profile-option" onClick={() => navigate('/faq')}>
+            <div className="option-icon">
+              <i className="fas fa-question-circle"></i>
+            </div>
+            <div className="option-text">
+              <span>FAQ & Help Center</span>
+            </div>
+            <i className="fas fa-chevron-right"></i>
+          </div>
+          
+          <div className="profile-option" onClick={() => navigate('/contact-support')}>
+            <div className="option-icon">
+              <i className="fas fa-headset"></i>
+            </div>
+            <div className="option-text">
+              <span>Contact Support</span>
+            </div>
+            <i className="fas fa-chevron-right"></i>
+          </div>
         </div>
-    );
-};
+      </div>
+    </div>
+  );
+}
 
-export default ProfilePage;
+export default ProfilePage; 
