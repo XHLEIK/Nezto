@@ -1,5 +1,5 @@
 # Project Structure Plan
-Current client side file structure is not organized and hard to maintain. I'd Suggest to organize the files according to the following structure.
+The current client-side file structure is disorganized and hard to maintain. I suggest organizing the files according to the following structure.
 ## Directory Structure
 
 ```
