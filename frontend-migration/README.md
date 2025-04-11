@@ -1,44 +1,28 @@
-# Nezto
+# Project Structure Plan
+Current client side file structure is not organized and hard to maintain. I'd Suggest to organize the files according to the following structure.
+## Directory Structure
 
-### **Effortless Laundry, One Tap Away**  
-Nezto is a modern, tech-driven laundry service designed to make laundry hassle-free. With a seamless pickup, cleaning, and delivery process, Nezto ensures your clothes stay fresh while you focus on what truly matters.  
+```
+src/
+├── assets/           # Static assets like images, icons, fonts
+├── components/       # Reusable UI components
+│   ├── common/       # Shared components like buttons, inputs
+│   ├── layout/       # Layout components like header, footer
+│   └── ui/          # UI specific components like cards, tables
+├── pages/           # Page components (routes)
+├── services/        # API services and business logic
+├── styles/          # Global styles. just tailwind would be better.
+│   ├── components/  # Component specific styles
+│   └── pages/       # Page specific styles
+├── utils/           # Utility functions and helpers
+└── context/         # React context providers
+```
 
----
+## Migration
 
-## 🚀 **What is Nezto?**  
-Nezto is an on-demand laundry service that provides:  
-✅ **Pickup & Delivery** – No more laundromat trips! We handle everything.  
-✅ **Premium Cleaning** – Your clothes are treated with the best care.  
-✅ **Real-time Tracking** – Stay updated on your laundry's status.  
-✅ **Fast & Reliable Service** – Because fresh clothes shouldn't be a wait.  
-
----
-
-## 🌟 **Why Nezto?**  
-Nezto isn't just another laundry service. We're building a **smart, scalable, and tech-integrated** platform to revolutionize how laundry works. With a clean and efficient UI, automated backend processes, and seamless user experience, we ensure maximum convenience.  
-
-### **Future Vision:**  
-While we're starting with laundry, Nezto is built with scalability in mind. Our platform is designed to expand into other essential services in the future, making everyday life easier.  
-
----
-
-## 🏗 **Tech Stack**  
-Nezto is built using cutting-edge technologies for performance and scalability:  
-🔹 **Frontend:** React (Next.js) with TypeScript for a smooth user experience.  
-🔹 **Backend:** Node.js with Express, optimized for speed and security.  
-🔹 **Database:** MongoDB for efficient and scalable data management.  
-🔹 **Cloud & Hosting:** Deployed using AWS/GCP for high availability.  
-
----
-
-## 🤝 **Join Us**  
-Nezto is an evolving project, and we're always looking for passionate contributors! Whether you're a developer, designer, or just someone with a great idea, we'd love to have you onboard.  
-
-🌍 **Website :** [nezto.in](https://nezto.in)
-
-📩 **Contact Us:** [info@nezto.in](mailto:info@nezto.in)
-
----
-
-### **💡 Stay Tuned for More!**  
-We're just getting started! Follow our journey as we redefine convenience with Nezto. 🚀
+1. Create new directory structure
+2. Move components to appropriate directories
+3. Consolidate styles
+4. Update import paths
+5. Clean up redundant files
+6. Update build configuration
