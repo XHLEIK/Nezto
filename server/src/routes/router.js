@@ -1,4 +1,5 @@
 import auth from "./auth.js"
+import laundryRouter from "./laundry.js"
 import { Router } from "express"
 import { google_auth_url } from "../config.js";
 
@@ -9,3 +10,4 @@ allRoutes.get("/", (req, res) => {
 })
 
 allRoutes.use("/auth", auth)
+allRoutes.use("/api/laundry", laundryRouter)
