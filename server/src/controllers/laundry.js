@@ -352,21 +352,13 @@ export const updateLaundryRating = async (req, res) => {
  */
 export const toggleLaundryServiceStatus = async (req, res) => {
   try {
-    // Find laundry service
+    // Find laundry service, next step to cache the data for fast retrieval
     const laundryService = await Laundry.findById(req.params.id);
     
     if (!laundryService) {
       return res.status(404).json({
         success: false,
         message: "Laundry service not found"
-      });
-    }
-    
-    // Check ownership
-    if (laundryService.owner.toString() !== req.user.id) {
-      return res.status(403).json({
-        success: false,
-        message: "You are not authorized to update this laundry service"
       });
     }
     
@@ -381,6 +373,7 @@ export const toggleLaundryServiceStatus = async (req, res) => {
       message: `Laundry service ${updatedService.status ? 'activated' : 'deactivated'} successfully`,
       data: updatedService
     });
+    
   } catch (error) {
     console.error("Error toggling laundry service status:", error);
     

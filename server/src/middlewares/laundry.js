@@ -24,7 +24,7 @@ export function isOwner(req, res, next){
             return res.status(401).json({ message: "Forbidden" });
         }
         if (!LaundryOwnerCache.get(user._id)) {
-            return res.status(403).json({ error : "Unauthorised", message: `User doesn't have ${role} perm to access this resource!!` });
+            return res.status(403).json({ error : "Unauthorised", message: `You are not authorized to update this laundry service` });
         }
         next();
     }
