@@ -19,7 +19,7 @@ class _LaundryOwnerCache extends Map {
     /**
      * @description Retrieves a value from the cache by key.
      * @param {string} key - The key to retrieve.
-     * @returns {String} The value associated with the key, or nll if not found. and in future the return value might change to a more complex object.
+     * @returns {String} The value associated with the key, or null if not found. and in future the return value might change to a more complex object.
      */
     get(key) {
         return super.get(key) || null;
