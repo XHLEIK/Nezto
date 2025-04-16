@@ -41,17 +41,18 @@ export async function googleAuth(req, res) {
             res.setHeader('token', _userExists.token);
             res.cookie('token', _userExists.token, { httpOnly: true, secure: true, sameSite: 'none' });
             res.status(200).json(_userExists);
-            return;
         }
 
 
         // if user does not exist in database
         const newUser = new User({ email: _user.email, picture: _user.picture, name: _user.name, role: "user" })
-        newUser.token = jwt.sign(jwtUser(newUser), jwtConfig.secret);
+        const token = jwt.sign(jwtUser({...newUser.toObject()}), jwtConfig.secret);
+        console.log(jwt.verify(token, jwtConfig.secret));
+        newUser.token = token;
         await newUser.save();
         res.setHeader('token', newUser.token);
         res.cookie('token', newUser.token, { httpOnly: true, secure: true, sameSite: 'none' });
-        res.status(200).json(newUser);
+        res.status(201).json(newUser);
         return;
 
     } catch (error) {
@@ -68,7 +69,6 @@ export async function googleAuth(req, res) {
 export async function LogIn(req, res) {
     res.redirect(google_auth_url(req));
 }
-
 
 
 export async function authenticate(req, res) {
