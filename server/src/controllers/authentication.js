@@ -40,8 +40,7 @@ export async function googleAuth(req, res) {
             await _userExists.save();
             res.setHeader('token', _userExists.token);
             res.cookie('token', _userExists.token, { httpOnly: true, secure: true, sameSite: 'none' });
-            res.status(204).json(_userExists);
-            return;
+            res.status(200).json(_userExists);
         }
 
 
