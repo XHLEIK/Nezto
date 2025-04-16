@@ -47,7 +47,7 @@ export async function googleAuth(req, res) {
 
         // if user does not exist in database
         const newUser = new User({ email: _user.email, picture: _user.picture, name: _user.name, role: "user" })
-        newUser.token = jwt.sign(jwtUser(newUser), jwtConfig.secret);
+        newUser.token = jwt.sign(jwtUser({...newUser, _id : newUser._id}), jwtConfig.secret);
         await newUser.save();
         res.setHeader('token', newUser.token);
         res.cookie('token', newUser.token, { httpOnly: true, secure: true, sameSite: 'none' });

@@ -43,3 +43,16 @@ export class JwtUser{
             this.updatedAt = Date(obj.updatedAt || new Date());
       }
 }
+
+export class LaundryService{
+      constructor(obj){
+            this.name = String(obj.name || "");
+            this.description = String(obj.description || "");
+            this.location = String(obj.location || "");
+            this.services = Array.isArray(obj.services) ? obj.services : [];
+            this.rating = Number(obj.rating || 0);
+            this.status = Boolean(obj.status || false);
+            this.createdAt = Date(obj.createdAt || new Date());
+            this.updatedAt = Date(obj.updatedAt || new Date());
+      }
+}

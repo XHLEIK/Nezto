@@ -4,6 +4,8 @@ import { Laundry } from "../models/Laundry.js";
 
 /**
  * @desc    Get all laundry services
+ * @param  {import("express").Request} req - Express request object
+ * @param  {import("express").Response} res - Express response object
  * @route   GET /api/laundry
  * @access  Public
  */
@@ -37,11 +39,15 @@ export const getAllLaundryServices = async (req, res) => {
 
 /**
  * @desc    Get laundry service by ID
+ * @param  {import("express").Request} req - Express request object
+ * @param  {import("express").Response} res - Express response object
  * @route   GET /api/laundry/:id
  * @access  Public
  */
 export const getLaundryServiceById = async (req, res) => {
   try {
+    // try to find laundry by its id and also fill the data of owner from Users collection
+    // populate the owner field with name, email, and phone from the User model
     const laundryService = await Laundry.findById(req.params.id).populate("owner", "name email phone");
     
     if (!laundryService) {
@@ -75,6 +81,8 @@ export const getLaundryServiceById = async (req, res) => {
 
 /**
  * @desc    Create new laundry service
+ * @param  {import("express").Request} req - Express request object
+ * @param  {import("express").Response} res - Express response object
  * @route   POST /api/laundry
  * @access  Private (Owner)
  */
@@ -116,6 +124,8 @@ export const createLaundryService = async (req, res) => {
 
 /**
  * @desc    Update laundry service
+ * @param  {import("express").Request} req - Express request object
+ * @param  {import("express").Response} res - Express response object
  * @route   PUT /api/laundry/:id
  * @access  Private (Owner)
  */
@@ -174,6 +184,8 @@ export const updateLaundryService = async (req, res) => {
 
 /**
  * @desc    Delete laundry service
+ * @param  {import("express").Request} req - Express request object
+ * @param  {import("express").Response} res - Express response object
  * @route   DELETE /api/laundry/:id
  * @access  Private (Owner)
  */
@@ -224,6 +236,8 @@ export const deleteLaundryService = async (req, res) => {
 
 /**
  * @desc    Get laundry services by proximity
+ * @param  {import("express").Request} req - Express request object
+ * @param  {import("express").Response} res - Express response object
  * @route   GET /api/laundry/nearby
  * @access  Public
  * @param   {number} lat - Latitude
@@ -270,8 +284,12 @@ export const getNearbyLaundryServices = async (req, res) => {
   }
 };
 
+
+
 /**
  * @desc    Update laundry service rating
+ * @param  {import("express").Request} req - Express request object
+ * @param  {import("express").Response} res - Express response object
  * @route   PATCH /api/laundry/:id/rating
  * @access  Private (Authenticated user)
  */
@@ -327,6 +345,8 @@ export const updateLaundryRating = async (req, res) => {
 
 /**
  * @desc    Toggle laundry service status (active/inactive)
+ * @param  {import("express").Request} req - Express request object
+ * @param  {import("express").Response} res - Express response object
  * @route   PATCH /api/laundry/:id/toggle-status
  * @access  Private (Owner)
  */
