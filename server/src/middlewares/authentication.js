@@ -10,7 +10,7 @@ import { LaundryOwnerCache } from "../utils/_cache.js";
  * @param {Function} next 
  */
 export function isOwner(req, res, next){
-        const token = req.cookies.token || req.headers.authorization.split(' ')[1];
+        const token = req.cookies.token || (req.headers.authorization && req.headers.authorization.split(' ')[1]);
         const laundryID = req.params.id;
         if (!token) {
             return res.status(401).json({ error: "Unauthorized", message: "No token provided" });
