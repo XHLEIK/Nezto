@@ -74,3 +74,32 @@ export function verifyJWT(token) {
         return null;
     }
 }
+
+
+/**
+ * Represents a standardized API response format.
+ * @class
+ * @classdesc A class for creating consistent API responses with status codes, data, messages, and optional error information.
+ * @param {number} statusCode - HTTP status code of the response
+ * @param {Object} data - The payload/data to be sent in the response
+ * @param {string} message - A human-readable message describing the response
+ * @param {*} [error=null] - Optional error information if there was an error
+ * @property {boolean} success - Automatically determined based on status code (true if < 400)
+ */
+export class ApiResponse {
+    /**
+     * @description Class representing an API response.
+     * @param {number} statusCode 
+     * @param {Object} data 
+     * @param {string} message 
+     */
+  constructor(statusCode, data, message, error=null) {
+    this.statusCode = statusCode;
+    this.data = data;
+    this.message = message;
+    if (error) {
+      this.error = error;
+    }
+    this.success = statusCode < 400;
+  }
+}
