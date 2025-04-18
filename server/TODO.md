@@ -15,7 +15,7 @@
 
 ## User Handler
 - [x] Create a new user
-- [ ] Get all users
-- [ ] Get user by id
-- [ ] Update user by id
-- [ ] Delete user by id
+- [x] Get all users
+- [x] Get user by id
+- [x] Update user by id
+- [x] Delete user by id
