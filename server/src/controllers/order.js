@@ -11,7 +11,7 @@ import mongoose from "mongoose";
  */
 async function createOrder(req, res){
   const { price, type, user, vendor, pick_time, drop_time, otp } = req.body;
-  if (!price || !type || !user || !vendor || !pick_time || !drop_time || !otp) {
+  if (price == null || !type || !user || !vendor || !pick_time || !drop_time || !otp) {
     return res.status(400).json({success: false, message: "All fields are required"});
   }
   const order = await Order.create({ price, type, user, vendor, pick_time, drop_time, otp, status: "pending"});
