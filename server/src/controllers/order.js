@@ -14,18 +14,7 @@ async function createOrder(req, res){
   if (!price || !type || !user || !vendor || !pick_time || !drop_time || !otp) {
     return res.status(400).json({success: false, message: "All fields are required"});
   }
-
-  const order = await Order.create({ 
-    price, 
-    type, 
-    user, 
-    vendor, 
-    pick_time, 
-    drop_time, 
-    otp, 
-    status: "pending" // Default status
-  });
-
+  const order = await Order.create({ price, type, user, vendor, pick_time, drop_time, otp, status: "pending"});
   return res.status(201).json(new ApiResponse(201, order, "Order created successfully"));
 }
 
@@ -38,7 +27,6 @@ async function createOrder(req, res){
  */
 async function getAllOrders(req, res) {
   const orders = await Order.find().populate("user", "name email").populate("vendor", "name email").populate("rider", "name email");
-
   return res.status(200).json(new ApiResponse(200, orders, "Orders fetched successfully"));
 }
 
@@ -59,22 +47,13 @@ async function getOrderById(req, res) {
       .status(400).json(new ApiResponse(400, null, "Invalid order ID"));
   }
 
-  const order = await Order.findById(id)
-    .populate("user", "name email")
-    .populate("vendor", "name email")
-    .populate("rider", "name email");
+  const order = await Order.findById(id).populate("user", "name email").populate("vendor", "name email").populate("rider", "name email");
 
   if (!order) {
-    return res
-      .status(404)
-      .json(new ApiResponse(404, null, "Order not found"));
+    return res.status(404).json(new ApiResponse(404, null, "Order not found"));
   }
 
-  return res
-    .status(200)
-    .json(
-      new ApiResponse(200, order, "Order fetched successfully")
-    );
+  return res.status(200).json(new ApiResponse(200, order, "Order fetched successfully"));
 }
 
 /**
