@@ -42,6 +42,10 @@ build/Release
 node_modules/
 jspm_packages/
 
+# testing blocks
+*/test
+*/tests
+
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
