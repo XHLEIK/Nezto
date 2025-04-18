@@ -1,7 +1,8 @@
-import auth from "./auth.js"
-import laundryRouter from "./laundry.js"
-import orderRouter from "./order.js"
-import { Router } from "express"
+import { Router } from "express";
+import authRoute from "./authRoute.js";
+import laundryRoute from "./laundryRoute.js";
+import orderRoute from "./orderRoute.js";
+import userRoute from "./userRoute.js";
 import { google_auth_url } from "../config.js";
 
 export const allRoutes = Router();
@@ -10,6 +11,7 @@ allRoutes.get("/", (req, res) => {
     res.json({ message : google_auth_url(req) });
 })
 
-allRoutes.use("/auth", auth)
-allRoutes.use("/api/laundry", laundryRouter)
-allRoutes.use("/api/order", orderRouter)
+allRoutes.use("/auth", authRoute)
+allRoutes.use("/api/laundry", laundryRoute)
+allRoutes.use("/api/order", orderRoute)
+allRoutes.use("/api/user", userRoute)
