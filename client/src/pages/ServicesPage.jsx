@@ -1,4 +1,8 @@
-// ... existing imports ...
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import { Search, Star, ChevronDown } from 'lucide-react';
 
 const ServicesPage = () => {
     // ... existing state and functions ...
@@ -11,10 +15,10 @@ const ServicesPage = () => {
             {/* Main Content */}
             <main className="flex-1 pt-16 pb-24">
                 {/* Hero Section with improved styling */}
-                <div className="bg-gradient-to-r from-primary to-primary/80 py-12 mb-8">
+                <div className="bg-gradient-to-r from-blue-600 to-indigo-700 py-16 mb-10">
                     <div className="max-w-screen-lg mx-auto px-4">
                         <div className="text-center">
-                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Our Services</h1>
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 animate-fadeIn">Our Premium Services</h1>
                             <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
                                 Professional laundry and dry cleaning services tailored to your needs
                             </p>
@@ -25,7 +29,7 @@ const ServicesPage = () => {
                 {/* Services Container */}
                 <div className="max-w-screen-lg mx-auto px-4">
                     {/* Filter and Search Section - Enhanced */}
-                    <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <div className="bg-white rounded-xl shadow-lg p-6 mb-10 border-l-4 border-blue-500">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                             <div className="flex-1">
                                 <div className="relative">
@@ -33,7 +37,7 @@ const ServicesPage = () => {
                                     <input 
                                         type="text" 
                                         placeholder="Search services..." 
-                                        className="w-full py-3 pl-10 pr-4 rounded-lg bg-gray-100 border-none focus:outline-none focus:ring-2 focus:ring-primary/20 text-base" 
+                                        className="w-full py-3 pl-10 pr-4 rounded-lg bg-gray-100 border-none focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-base" 
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
                                     />
@@ -47,7 +51,7 @@ const ServicesPage = () => {
                                         onClick={() => setActiveCategory(category.id)}
                                         className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                                             activeCategory === category.id
-                                                ? 'bg-primary text-white'
+                                                ? 'bg-blue-600 text-white'
                                                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                         }`}
                                     >
@@ -58,7 +62,7 @@ const ServicesPage = () => {
                                     onClick={() => setActiveCategory('all')}
                                     className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                                         activeCategory === 'all'
-                                            ? 'bg-primary text-white'
+                                            ? 'bg-blue-600 text-white'
                                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                                 >
@@ -69,17 +73,17 @@ const ServicesPage = () => {
                     </div>
                     
                     {/* Services Grid - Enhanced with better cards */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                         {filteredServices.map(service => (
                             <div 
                                 key={service.id}
-                                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full border border-gray-100"
+                                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-gray-100 transform hover:-translate-y-2"
                             >
                                 <div className="h-48 bg-gray-100 relative overflow-hidden">
                                     <img 
                                         src={service.image} 
                                         alt={service.name} 
-                                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                                         loading="lazy"
                                         onError={(e) => {
                                             e.target.onerror = null;
@@ -87,22 +91,22 @@ const ServicesPage = () => {
                                         }}
                                     />
                                     {service.popular && (
-                                        <div className="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded-lg">
+                                        <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-lg shadow-md">
                                             Popular
                                         </div>
                                     )}
                                 </div>
-                                <div className="p-5 flex-1 flex flex-col">
-                                    <div className="mb-2">
-                                        <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                                <div className="p-6 flex-1 flex flex-col">
+                                    <div className="mb-3">
+                                        <span className="text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
                                             {getCategoryName(service.category)}
                                         </span>
                                     </div>
-                                    <h3 className="font-semibold text-gray-800 text-xl mb-2">{service.name}</h3>
+                                    <h3 className="font-bold text-gray-800 text-xl mb-2">{service.name}</h3>
                                     <p className="text-gray-600 text-sm mb-4 flex-1">{service.description}</p>
                                     <div className="flex justify-between items-center mt-auto">
                                         <div>
-                                            <span className="font-bold text-primary text-xl">₹{service.price}</span>
+                                            <span className="font-bold text-blue-600 text-xl">₹{service.price}</span>
                                             {service.oldPrice && (
                                                 <span className="text-gray-400 text-sm line-through ml-2">₹{service.oldPrice}</span>
                                             )}
@@ -114,7 +118,7 @@ const ServicesPage = () => {
                                     </div>
                                     <button 
                                         onClick={() => handleServiceClick(service.id)}
-                                        className="mt-4 w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                                        className="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md"
                                     >
                                         Book Now
                                     </button>
