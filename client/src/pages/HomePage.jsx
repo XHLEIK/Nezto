@@ -672,58 +672,58 @@ const HomePage = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                 </svg>
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                    <span className="text-white font-bold text-2xl">Nezto</span>
+                                    <span className="text-white font-bold text-3xl">Nezto</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    {/* Contact Section - Enhanced for mobile visibility */}
-                    <div className="bg-white py-10 sm:py-14">
-                        <div className="container mx-auto px-5">
-                            <div className="text-center mb-10 sm:mb-12">
+                    {/* Contact Section - Enhanced with better cards */}
+                    <div className="bg-white py-14 -mx-4 sm:-mx-6 px-4 sm:px-6 my-12">
+                        <div className="container mx-auto">
+                            <div className="text-center mb-12">
                                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
                                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                                     Have questions about our services? Our customer support team is here to help.
                                 </p>
                             </div>
                             
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-                                <div className="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-                                    <div className="bg-primary/10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition-all transform hover:-translate-y-1">
+                                    <div className="bg-primary/10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-5">
                                         <Phone className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-semibold mb-2 sm:mb-3">Call Us</h3>
-                                    <p className="text-gray-600 mb-4 sm:mb-5 text-base md:text-lg">Speak directly with our customer service team</p>
+                                    <h3 className="text-xl md:text-2xl font-semibold mb-3">Call Us</h3>
+                                    <p className="text-gray-600 mb-5 text-base md:text-lg">Speak directly with our customer service team</p>
                                     <a 
                                         href="tel:+919876543210" 
-                                        className="text-white bg-primary px-6 py-3.5 sm:py-4 rounded-lg font-medium text-lg block mx-auto w-full max-w-xs hover:bg-primary/90 transition-colors"
+                                        className="text-white bg-primary px-6 py-4 rounded-lg font-medium text-lg block mx-auto w-full max-w-xs hover:bg-primary/90 transition-colors shadow-md"
                                     >
                                         +91 98765 43210
                                     </a>
                                 </div>
                                 
-                                <div className="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-                                    <div className="bg-primary/10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                                <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition-all transform hover:-translate-y-1">
+                                    <div className="bg-primary/10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-5">
                                         <Mail className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-semibold mb-2 sm:mb-3">Email Us</h3>
-                                    <p className="text-gray-600 mb-4 sm:mb-5 text-base md:text-lg">Send us an email and we'll get back to you</p>
+                                    <h3 className="text-xl md:text-2xl font-semibold mb-3">Email Us</h3>
+                                    <p className="text-gray-600 mb-5 text-base md:text-lg">Send us an email and we'll get back to you</p>
                                     <a 
                                         href="mailto:support@nezto.com" 
-                                        className="text-white bg-primary px-6 py-3.5 sm:py-4 rounded-lg font-medium text-lg block mx-auto w-full max-w-xs hover:bg-primary/90 transition-colors"
+                                        className="text-white bg-primary px-6 py-4 rounded-lg font-medium text-lg block mx-auto w-full max-w-xs hover:bg-primary/90 transition-colors shadow-md"
                                     >
                                         support@nezto.com
                                     </a>
                                 </div>
                                 
-                                <div className="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-                                    <div className="bg-primary/10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                                <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition-all transform hover:-translate-y-1">
+                                    <div className="bg-primary/10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-5">
                                         <MessageSquare className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-semibold mb-2 sm:mb-3">Live Chat</h3>
-                                    <p className="text-gray-600 mb-4 sm:mb-5 text-base md:text-lg">Chat with our team for immediate assistance</p>
-                                    <button className="text-white bg-primary px-6 py-3.5 sm:py-4 rounded-lg font-medium text-lg block mx-auto w-full max-w-xs hover:bg-primary/90 transition-colors">
+                                    <h3 className="text-xl md:text-2xl font-semibold mb-3">Live Chat</h3>
+                                    <p className="text-gray-600 mb-5 text-base md:text-lg">Chat with our team for immediate assistance</p>
+                                    <button className="text-white bg-primary px-6 py-4 rounded-lg font-medium text-lg block mx-auto w-full max-w-xs hover:bg-primary/90 transition-colors shadow-md">
                                         Start Chat
                                     </button>
                                 </div>
@@ -731,11 +731,11 @@ const HomePage = () => {
                         </div>
                     </div>
                     
-                    {/* FAQ Section - Enhanced for mobile visibility */}
-                    <div className="bg-gray-100 py-10 sm:py-14">
-                        <div className="container mx-auto px-5">
-                            <div className="text-center mb-8 sm:mb-10">
-                                <h2 className="text-3xl font-bold text-gray-900 mb-3">Frequently Asked Questions</h2>
+                    {/* FAQ Section - Enhanced with better styling */}
+                    <div className="bg-gray-50 py-14 -mx-4 sm:-mx-6 px-4 sm:px-6 my-12">
+                        <div className="container mx-auto">
+                            <div className="text-center mb-10">
+                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
                                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                                     Get answers to the most common questions about our services.
                                 </p>
@@ -743,25 +743,34 @@ const HomePage = () => {
                             
                             <div className="max-w-3xl mx-auto">
                                 {faqs.map((faq, index) => (
-                                    <div key={index} className="mb-4 sm:mb-5">
+                                    <div key={index} className="mb-5">
                                         <button
                                             onClick={() => toggleFaq(index)}
-                                            className="flex justify-between items-center w-full text-left p-5 sm:p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                                            className="flex justify-between items-center w-full text-left p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all"
                                             aria-expanded={activeFaq === index}
                                         >
                                             <span className="text-lg sm:text-xl font-medium text-gray-900 pr-4">{faq.question}</span>
                                             <ChevronDown 
-                                                className={`h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 text-primary transition-transform ${activeFaq === index ? 'transform rotate-180' : ''}`} 
+                                                className={`h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 text-primary transition-transform duration-300 ${activeFaq === index ? 'transform rotate-180' : ''}`} 
                                             />
                                         </button>
                                         
                                         {activeFaq === index && (
-                                            <div className="mt-2 p-5 sm:p-6 bg-white rounded-xl shadow-sm">
+                                            <div className="mt-2 p-6 bg-white rounded-xl shadow-md border-t-2 border-primary">
                                                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed">{faq.answer}</p>
                                             </div>
                                         )}
                                     </div>
                                 ))}
+                            </div>
+                            
+                            <div className="text-center mt-10">
+                                <button 
+                                    className="bg-white text-primary font-medium border-2 border-primary rounded-lg px-8 py-4 text-lg hover:bg-primary/5 transition-colors shadow-md"
+                                    onClick={() => navigate('/faq')}
+                                >
+                                    View All FAQs
+                                </button>
                             </div>
                         </div>
                     </div>
